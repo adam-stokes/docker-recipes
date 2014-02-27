@@ -17,11 +17,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install basic packages.
-RUN apt-get install -y curl git perl cpanminus cpanoutdated
+RUN apt-get install -y curl git perl perl-modules cpanminus cpanoutdated build-essential
 
-# Set working directory.
-ENV HOME /root
-WORKDIR /root
-
-RUN cpanm --notest https://github.com/battlemidget/Task-ADAMJS.git
+RUN cpanm https://github.com/battlemidget/Task-ADAMJS/archive/v1.3.tar.gz
 RUN task-adamjs-install
